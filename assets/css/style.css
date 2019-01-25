@@ -1,4 +1,6 @@
 
+/* All Pages */
+
 body {
     background-color: #FFE04E;
 }
@@ -26,10 +28,6 @@ h2 {
     letter-spacing: 1px;
 }
 
-form {
-    margin-top: 1.5rem;
-}
-
 .btn {
     margin-top: 1rem;
     background-color: #B20A91;
@@ -41,6 +39,13 @@ form {
 .btn:hover {
     background-color: #7F0768;
     border: 1px solid #B20A91;
+}
+
+/* Gif Page only */
+
+form {
+    margin-top: 1.5rem;
+    margin-left: .5rem;
 }
 
 .input-field {

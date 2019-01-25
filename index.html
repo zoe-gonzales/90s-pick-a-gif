@@ -16,19 +16,38 @@
 </head>
 <body>
     <div class="container">
+        <!-- Title / Link to Favorites Page -->
         <div class="row">
             <div class="col-md-9"><h1>90s Pick-A-Gif!</h1></div>
             <div class="col-md-3">
                 <a href="favorites.html"><h2 class="nav">Go to favorites</h2></a>
             </div>
         </div>
-        <h2>Click on one of the TV shows below to see its gifs. Or, add your own!</h2>
-        <div id="button-area"></div>
-        <form id="tv-form">
-            <input id="tv-input" class="input-field" type="text"><br>
-            <input id="add-show" class="btn btn-info" type="submit" value="Add TV Show">
-        </form>
+        <!-- Instructions -->
+        <div class="row">
+            <div class="col-md-12">
+                <h2>Click on one of the TV shows below to see its gifs. Or, add your own!</h2>
+            </div>
+        </div>
+        <!-- Buttons -->
+        <div class="row">
+            <div class="col-md-12"></div>
+                <div id="button-area"></div>
+            </div>
+        </div>
+        <!-- Add new button form -->
+        <div class="row">
+            <div class="col-md-1"></div>
+            <div class="col-md-5">
+                <form id="tv-form">
+                    <input id="tv-input" class="input-field" type="text"><br>
+                    <input id="add-show" class="btn btn-info" type="submit" value="Add TV Show">
+                </form>
+            </div>
+            <div class="col-md-6"></div>
+        </div>
     </div>
+    <!-- Gif Area -->
     <div id="gif-area" class="container"></div>
     <script type="text/javascript" src="assets/javascript/app.js"></script>
 </body>

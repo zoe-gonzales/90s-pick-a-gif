@@ -19,8 +19,7 @@ $(document).ready(function(){
             button.text(topics[i]);
             // Append to #button-area
             $("#button-area").append(button);
-        }
-        
+        } 
     }
 
     // CLICK EVENTS
@@ -47,10 +46,14 @@ $(document).ready(function(){
                 newMedia.attr("src", imageSource);
                 // creates button to add to favorites
                 var addToFav = $("<button>");
+                // text for add to favorites button
                 addToFav.text("Add to Favorites");
+                // adding classes for this button
                 addToFav.addClass("btn btn-info add-fav");
+                // appending image and button to new gif div
                 newGif.append(newMedia);
                 newGif.append(addToFav);
+                // adding class to newGif for later targeting
                 newGif.addClass("new-gif");
                 // prepends to the #gif-area div
                 $("#gif-area").prepend(newGif);
@@ -70,8 +73,11 @@ $(document).ready(function(){
         renderButtons();
     });
 
-    $(document).on("click", ".add-fav", function(){
-        $("#favorites-area").prepend(".new-gif");
+    $(document).on("click", ".add-fav", function(event){
+        // save the image to a variable
+        // save variable in cookies so that the page refresh won't wipe it clean
+        // prepend favorited gif to div with id of #favorites-area on favorites page
+            // ^ include a "remove from favorites button for each div on this page"
     });
         
     renderButtons();
