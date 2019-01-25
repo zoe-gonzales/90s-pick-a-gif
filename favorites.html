@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>90s Pick-A-Gif!</title>
+    <title>Favorites</title>
     <!-- Bootstrap -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
     <!-- Local Styles -->
@@ -17,19 +17,15 @@
 <body>
     <div class="container">
         <div class="row">
-            <div class="col-md-9"><h1>90s Pick-A-Gif!</h1></div>
+            <div class="col-md-9"><h1>My Favorites</h1></div>
             <div class="col-md-3">
-                <a href="favorites.html"><h2 class="nav">Go to favorites</h2></a>
+                <a href="index.html"><h2 class="nav">Back to main</h2></a>
             </div>
         </div>
-        <h2>Click on one of the TV shows below to see its gifs. Or, add your own!</h2>
-        <div id="button-area"></div>
-        <form id="tv-form">
-            <input id="tv-input" class="input-field" type="text"><br>
-            <input id="add-show" class="btn btn-info" type="submit" value="Add TV Show">
-        </form>
+        <button class="btn btn-info">Clear All</button>
+        <div id="favorites-area"></div>
+        
     </div>
-    <div id="gif-area" class="container"></div>
     <script type="text/javascript" src="assets/javascript/app.js"></script>
 </body>
 </html>

@@ -37,12 +37,21 @@ $(document).ready(function(){
         }).then(function(response){
             // loops through array of available gifs (should be 10 in total)
             for (var i=0; i < response.data.length; i++) {
+                // makes div to hold gif and other info
+                var newGif = $("<div>");
                 // makes new image element for each gif
-                var newGif = $("<img>");
+                var newMedia = $("<img>");
                 // retrieves image url from object and saving to variable
                 var imageSource = response.data[i].images.fixed_height.url;
                 // assigns image source to <img> element
-                newGif.attr("src", imageSource);
+                newMedia.attr("src", imageSource);
+                // creates button to add to favorites
+                var addToFav = $("<button>");
+                addToFav.text("Add to Favorites");
+                addToFav.addClass("btn btn-info add-fav");
+                newGif.append(newMedia);
+                newGif.append(addToFav);
+                newGif.addClass("new-gif");
                 // prepends to the #gif-area div
                 $("#gif-area").prepend(newGif);
             }
@@ -59,6 +68,10 @@ $(document).ready(function(){
         topics.push(input);
         // rerun function to populate buttons
         renderButtons();
+    });
+
+    $(document).on("click", ".add-fav", function(){
+        $("#favorites-area").prepend(".new-gif");
     });
         
     renderButtons();

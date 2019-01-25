@@ -10,6 +10,16 @@ h1 {
     letter-spacing: 1px;
 }
 
+a {
+   text-decoration: none;
+   color: black;
+}
+
+a:hover {
+    text-decoration: none;
+    color: #26B200;
+}
+
 h2 {
     margin-top: 1.5rem;
     font-family: 'Londrina Solid', cursive;
@@ -41,6 +51,12 @@ form {
     margin: .3rem;
 }
 
-img {
+img,
+.add-fav {
     margin: .7rem;
+}
+
+.new-gif {
+    float: left;
+    width: 30%;
 }
