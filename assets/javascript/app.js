@@ -4,8 +4,60 @@ $(document).ready(function(){
     var topics = ["Hey Arnold", "Fresh Prince", "Aaahh!!! Real Monsters", "Daria", "All That", "Courage the Cowardly Dog", "Pokémon", "Sailor Moon", "CatDog", "PowerPuff Girls"];
 
     // Media Files
-    var Daria = $("<audio>");
-    Daria.attr("src", "./assets/media/Daria.mp3");
+    // Daria
+    var daria = $("<audio>");
+    daria.attr("src", "./assets/media/Daria.mp3");
+    $("#daria-play").on("click", function(){
+        daria.get(0).play();
+    })
+    $("#daria-pause").on("click", function(){
+        daria.get(0).pause();
+    });
+    // Hey Arnold
+    var arnold = $("<audio>");
+    arnold.attr("src", "./assets/media/HeyArnold.mp3");
+    $("#arnold-play").on("click", function(){
+        arnold.get(0).play();
+    })
+    $("#arnold-pause").on("click", function(){
+        arnold.get(0).pause();
+    });
+    // Fresh Prince
+    var prince = $("<audio>");
+    prince.attr("src", "./assets/media/FreshPrince.mp3");
+    $("#prince-play").on("click", function(){
+        prince.get(0).play();
+    })
+    $("#prince-pause").on("click", function(){
+        prince.get(0).pause();
+    });
+    // Sailor Moon
+    var sailor = $("<audio>");
+    sailor.attr("src", "./assets/media/SailorMoon.mp3");
+    $("#sailor-play").on("click", function(){
+        sailor.get(0).play();
+    })
+    $("#sailor-pause").on("click", function(){
+        sailor.get(0).pause();
+    });
+    // PowerPuff Girls
+    var power = $("<audio>");
+    power.attr("src", "./assets/media/PowerpuffGirls.mp3");
+    $("#power-play").on("click", function(){
+        power.get(0).play();
+    })
+    $("#power-pause").on("click", function(){
+        power.get(0).pause();
+    });
+    // All That
+    var allThat = $("<audio>");
+    allThat.attr("src", "./assets/media/AllThat.mp3");
+    $("#all-play").on("click", function(){
+        allThat.get(0).play();
+    })
+    $("#all-pause").on("click", function(){
+        allThat.get(0).pause();
+    });
 
     // FUNCTIONS
     // Function displays buttons dynamically - loops through the topics array
