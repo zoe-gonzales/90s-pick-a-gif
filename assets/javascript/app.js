@@ -3,6 +3,10 @@ $(document).ready(function(){
     // Array includes all of the intial buttons to be displayed
     var topics = ["Hey Arnold", "Fresh Prince", "Aaahh!!! Real Monsters", "Daria", "All That", "Courage the Cowardly Dog", "Pokémon", "Sailor Moon", "CatDog", "PowerPuff Girls"];
 
+    // Media Files
+    var Daria = $("<audio>");
+    Daria.attr("src", "./assets/media/Daria.mp3");
+
     // FUNCTIONS
     // Function displays buttons dynamically - loops through the topics array
     function renderButtons() {
@@ -79,6 +83,11 @@ $(document).ready(function(){
         // prepend favorited gif to div with id of #favorites-area on favorites page
             // ^ include a "remove from favorites button for each div on this page"
     });
+
+    
+    // $("#daria-theme").on("click", function(){
+    //     Daria.play();
+    // });
         
     renderButtons();
 })

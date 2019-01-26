@@ -11,6 +11,8 @@
     <link rel="stylesheet" href="assets/css/style.css">
     <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css?family=Londrina+Sketch|Londrina+Solid" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
     <!-- jQuery -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 </head>
@@ -18,33 +20,50 @@
     <div class="container">
         <!-- Title / Link to Favorites Page -->
         <div class="row">
-            <div class="col-md-9"><h1>90s Pick-A-Gif!</h1></div>
+            <div class="col-md-6"><h1>90s Pick-A-Gif!</h1></div>
             <div class="col-md-3">
                 <a href="favorites.html"><h2 class="nav">Go to favorites</h2></a>
+            </div>
+            <div class="col-md-3 text-right">
+                <h2>Listen while you play:</h2>
             </div>
         </div>
         <!-- Instructions -->
         <div class="row">
-            <div class="col-md-12">
+            <div class="col-md-9">
                 <h2>Click on one of the TV shows below to see its gifs. Or, add your own!</h2>
+            </div>
+            <div class="col-md-3 text-right">
+                <button class="btn btn-info" id="daria-theme"><i class="far fa-play-circle"></i> Daria</button>
+                <button class="btn btn-info"><i class="far fa-pause-circle"></i></button>
+                <button class="btn btn-info" id="arnold-theme"><i class="far fa-play-circle"></i> Hey Arnold</button>
+                <button class="btn btn-info"><i class="far fa-pause-circle"></i></button>
             </div>
         </div>
         <!-- Buttons -->
         <div class="row">
-            <div class="col-md-12"></div>
-                <div id="button-area"></div>
+            <div class="col-md-9" id="button-area"></div>
+            <div class="col-md-3 text-right">
+                <button class="btn btn-info" id="prince-theme"><i class="far fa-play-circle"></i> Fresh Prince</button>
+                <button class="btn btn-info"><i class="far fa-pause-circle"></i></button>
+                <button class="btn btn-info" id="sailor-theme"><i class="far fa-play-circle"></i> Sailor Moon</button>
+                <button class="btn btn-info"><i class="far fa-pause-circle"></i></button>
+                <button class="btn btn-info" id="power-theme"><i class="far fa-play-circle"></i> PowerPuff Girls</button>
+                <button class="btn btn-info"><i class="far fa-pause-circle"></i></button>
             </div>
         </div>
         <!-- Add new button form -->
         <div class="row">
-            <div class="col-md-1"></div>
-            <div class="col-md-5">
+            <div class="col-md-9">
                 <form id="tv-form">
                     <input id="tv-input" class="input-field" type="text"><br>
                     <input id="add-show" class="btn btn-info" type="submit" value="Add TV Show">
                 </form>
             </div>
-            <div class="col-md-6"></div>
+            <div class="col-md-3 text-right">
+                <button class="btn btn-info" id="all-theme"><i class="far fa-play-circle"></i> All That</button>
+                <button class="btn btn-info"><i class="far fa-pause-circle"></i></button>
+            </div>
         </div>
     </div>
     <!-- Gif Area -->
