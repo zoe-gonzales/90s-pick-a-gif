@@ -1,3 +1,4 @@
+
 body {
     background-color: #FFE04E;
 }
@@ -85,7 +86,6 @@ img {
 .new-gif {
     float: left;
     width: 33%;
-    /* margin-right: .3rem; */
     overflow: hidden;
 }
 
