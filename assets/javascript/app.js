@@ -87,10 +87,8 @@ $(document).ready(function(){
             url: queryURL,
             method: "GET"
         }).then(function(response){
-            console.log(response);
             // loops through array of available gifs (should be 10 in total)
             for (var i=0; i < response.data.length; i++) {
-                
                 // makes div to hold gif and other info
                 var newGif = $("<div>");
                 // makes new image element for each gif
@@ -150,14 +148,22 @@ $(document).ready(function(){
     });
 
     $("#gif-area").on("click", ".add-fav", function(event){
-        // save the image to a variable
+        // save the gif div to a variable
+        var favGif = $(this).prevAll().clone();
+        var removeFav = $("<button>");
+        removeFav.addClass("btn btn-info my-fav");
+        removeFav.attr("id", "remove");
+        removeFav.text(`Remove from favorites`);
+        
+        $("#fav").append(favGif[1], removeFav);
         // save variable in cookies so that the page refresh won't wipe it clean
-        // prepend favorited gif to div with id of #favorites-area on favorites page
         // ^ include a "remove from favorites button for each div on this page"
         // sessionStorage.setItem("favorite", $("img"));
         // console.log(sessionStorage);
         // var favoritesArea = $("#favorites-area");
     });
+
+    $("#remove").on("click", function(){});
 
     renderButtons();
 })

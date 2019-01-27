@@ -21,8 +21,7 @@
     <div class="container">
         <!-- Title / Link to Favorites Page -->
         <div class="row">
-            <div class="col-md-6"><h1>90s Pick-A-Gif!</h1></div>
-            <div class="col-md-6"></div>
+            <div class="col-md-12"><h1>90s Pick-A-Gif!</h1></div>
         </div>
         <!-- Instructions -->
         <div class="row">
@@ -32,14 +31,11 @@
         </div>
         <!-- Buttons -->
         <div class="row">
-            <div class="col-md-9" id="button-area"></div>
-            <div class="col-md-3 text-right">
-                
-            </div>
+            <div class="col-md-12" id="button-area"></div>
         </div>
         <!-- Add new button form -->
         <div class="row">
-            <div class="col-md-10">
+            <div class="col-md-12">
                 <form id="tv-form">
                     <input id="tv-input" class="input-field" type="text"><br>
                     <input id="add-show" class="btn btn-info" type="submit" value="Add TV Show">
@@ -47,7 +43,8 @@
                 <!-- Gif Area -->
                 <div id="gif-area" ></div>
             </div>
-            <div class="col-md-2 text-right">
+        <div class="row listen">
+            <div class="col-md-12">
                 <h2>Listen while you play:</h2>
                 <button class="btn btn-info btn-music" id="daria-play"><i class="far fa-play-circle"></i> Daria</button>
                 <button class="btn btn-info btn-music" id="arnold-play"><i class="far fa-play-circle"></i> Hey Arnold</button>
@@ -56,8 +53,12 @@
                 <button class="btn btn-info btn-music" id="power-play"><i class="far fa-play-circle"></i> PowerPuff Girls</button>
                 <button class="btn btn-info btn-music" id="all-play"><i class="far fa-play-circle"></i> All That</button>
                 <button class="btn btn-info btn-music" id="pause"><i class="far fa-pause-circle"></i> Pause All</button>
-                <div class="favorites-area"></div>
+                <div id="fav">
+                    <h2>Your <i class="fas fa-heart"></i>'s</h2>
+                </div>
             </div>
+        </div>
+            
         </div>
     </div>
     <script type="text/javascript" src="assets/javascript/app.js"></script>

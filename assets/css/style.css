@@ -3,7 +3,7 @@ body {
 }
 
 .container {
-    margin-bottom: 2rem;
+    margin: 0 2rem 1rem 2rem;
 }
 
 h1 {
@@ -73,16 +73,24 @@ img {
     margin: 0 .7rem .7rem .7rem; 
 }
 
+.my-fav {
+    margin: 0 .7rem .7rem .7rem; 
+}
+
 .new-gif {
     float: left;
-    width: 40%;
-    margin-right: .5rem;
+    width: 33%;
+    /* margin-right: .3rem; */
     overflow: hidden;
 }
 
 .btn-music {
+    margin-top: 1rem;
     background-color: #008080;
     border: 1px solid #008080;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    letter-spacing: 1px;
+    margin-right: .3rem;
 }
 
 .btn-music:hover {
@@ -90,8 +98,12 @@ img {
     border: 1px solid #008080;
 }
 
+.listen {
+    margin-left: 1rem;
+}
 
-/* Media Queries for Responsiveness */
+
+/* Media Queries for Mobile Responsiveness */
 
 @media screen and (max-width: 980px) {
     h1 {
@@ -115,9 +127,22 @@ img {
     .btn-music {
         text-align: center;
     }
+
+    .listen {
+        margin-left: .5rem;
+    }
+    
 }
 
 @media screen and (max-width: 768px) {
+    
+    .container {
+        margin: 0 1.5rem .75rem 1.5rem;
+    }
+    
+    .listen {
+        margin-left: .4rem;
+    }
 
 }
 
@@ -132,6 +157,15 @@ img {
         text-align: center;
         width: 100%;
     }
+
+    .container {
+        margin: 0 1rem .5rem 1rem;
+    }
+
+    .listen {
+        margin-left: .3rem;
+    }
+    
 }
 
 @media screen and (max-width: 380px) {
@@ -139,4 +173,13 @@ img {
     .new-gif {
         width: 90%;
     }
+
+    .container {
+        margin: 0 .5rem .25rem .5rem;
+    }
+
+    .listen {
+        margin-left: .2rem;
+    }
+    
 }
