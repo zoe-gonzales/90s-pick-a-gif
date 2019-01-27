@@ -4,7 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>90s Pick-A-Gif!</title>
+    <title>Pick-A-Gif!</title>
+    <link rel="shortcut icon" type="image/ico" href="assets/media/favicon.ico">
     <!-- Bootstrap -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
     <!-- Local Styles -->
@@ -21,53 +22,44 @@
         <!-- Title / Link to Favorites Page -->
         <div class="row">
             <div class="col-md-6"><h1>90s Pick-A-Gif!</h1></div>
-            <div class="col-md-3">
-                <a href="favorites.html"><h2 class="nav">Go to favorites</h2></a>
-            </div>
-            <div class="col-md-3 text-right">
-                <h2>Listen while you play:</h2>
-            </div>
+            <div class="col-md-6"></div>
         </div>
         <!-- Instructions -->
         <div class="row">
-            <div class="col-md-9">
+            <div class="col-md-12">
                 <h2>Click on one of the TV shows below to see its gifs. Or, add your own!</h2>
-            </div>
-            <div class="col-md-3 text-right">
-                <button class="btn btn-info" id="daria-play"><i class="far fa-play-circle"></i> Daria</button>
-                <button class="btn btn-info" id="daria-pause"><i class="far fa-pause-circle"></i></button>
-                <button class="btn btn-info" id="arnold-play"><i class="far fa-play-circle"></i> Hey Arnold</button>
-                <button class="btn btn-info" id="arnold-pause"><i class="far fa-pause-circle"></i></button>
             </div>
         </div>
         <!-- Buttons -->
         <div class="row">
             <div class="col-md-9" id="button-area"></div>
             <div class="col-md-3 text-right">
-                <button class="btn btn-info" id="prince-play"><i class="far fa-play-circle"></i> Fresh Prince</button>
-                <button class="btn btn-info" id="prince-pause"><i class="far fa-pause-circle"></i></button>
-                <button class="btn btn-info" id="sailor-play"><i class="far fa-play-circle"></i> Sailor Moon</button>
-                <button class="btn btn-info" id="sailor-pause"><i class="far fa-pause-circle"></i></button>
-                <button class="btn btn-info" id="power-play"><i class="far fa-play-circle"></i> PowerPuff Girls</button>
-                <button class="btn btn-info" id="power-pause"><i class="far fa-pause-circle"></i></button>
+                
             </div>
         </div>
         <!-- Add new button form -->
         <div class="row">
-            <div class="col-md-9">
+            <div class="col-md-10">
                 <form id="tv-form">
                     <input id="tv-input" class="input-field" type="text"><br>
                     <input id="add-show" class="btn btn-info" type="submit" value="Add TV Show">
                 </form>
+                <!-- Gif Area -->
+                <div id="gif-area" ></div>
             </div>
-            <div class="col-md-3 text-right">
-                <button class="btn btn-info" id="all-play"><i class="far fa-play-circle"></i> All That</button>
-                <button class="btn btn-info" id="all-pause"><i class="far fa-pause-circle"></i></button>
+            <div class="col-md-2 text-right">
+                <h2>Listen while you play:</h2>
+                <button class="btn btn-info btn-music" id="daria-play"><i class="far fa-play-circle"></i> Daria</button>
+                <button class="btn btn-info btn-music" id="arnold-play"><i class="far fa-play-circle"></i> Hey Arnold</button>
+                <button class="btn btn-info btn-music" id="prince-play"><i class="far fa-play-circle"></i> Fresh Prince</button>
+                <button class="btn btn-info btn-music" id="sailor-play"><i class="far fa-play-circle"></i> Sailor Moon</button>
+                <button class="btn btn-info btn-music" id="power-play"><i class="far fa-play-circle"></i> PowerPuff Girls</button>
+                <button class="btn btn-info btn-music" id="all-play"><i class="far fa-play-circle"></i> All That</button>
+                <button class="btn btn-info btn-music" id="pause"><i class="far fa-pause-circle"></i> Pause All</button>
+                <div class="favorites-area"></div>
             </div>
         </div>
     </div>
-    <!-- Gif Area -->
-    <div id="gif-area" class="container"></div>
     <script type="text/javascript" src="assets/javascript/app.js"></script>
 </body>
 </html>

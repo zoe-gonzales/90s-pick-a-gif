@@ -1,8 +1,9 @@
-
-/* All Pages */
-
 body {
     background-color: #FFE04E;
+}
+
+.container {
+    margin-bottom: 2rem;
 }
 
 h1 {
@@ -41,7 +42,15 @@ h2 {
     border: 1px solid #B20A91;
 }
 
-/* Gif Page only */
+p {
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    font-size: 1.5rem;
+    margin-left: .7rem;
+}
+
+#gif-area {
+    margin-top: 1rem;
+}
 
 form {
     margin-top: 1.5rem;
@@ -56,12 +65,78 @@ form {
     margin: .3rem;
 }
 
-img,
-.add-fav {
+img {
     margin: .7rem;
+}
+
+.add-fav {
+    margin: 0 .7rem .7rem .7rem; 
 }
 
 .new-gif {
     float: left;
-    width: 30%;
+    width: 40%;
+    margin-right: .5rem;
+    overflow: hidden;
+}
+
+.btn-music {
+    background-color: #008080;
+    border: 1px solid #008080;
+}
+
+.btn-music:hover {
+    background-color: #006E6E;
+    border: 1px solid #008080;
+}
+
+
+/* Media Queries for Responsiveness */
+
+@media screen and (max-width: 980px) {
+    h1 {
+        margin-top: 1.75rem;
+        font-size: 3.25rem;
+    }
+
+    h2 {
+        margin-top: 1rem;
+    }
+
+    .btn {
+        margin-top: .5rem;
+    }
+
+    .new-gif {
+        float: left;
+        width: 45%;
+    }
+    
+    .btn-music {
+        text-align: center;
+    }
+}
+
+@media screen and (max-width: 768px) {
+
+}
+
+@media screen and (max-width: 640px) {
+
+    .btn-music {
+
+    }
+
+    .new-gif {
+        align-items: center;
+        text-align: center;
+        width: 100%;
+    }
+}
+
+@media screen and (max-width: 380px) {
+
+    .new-gif {
+        width: 90%;
+    }
 }
