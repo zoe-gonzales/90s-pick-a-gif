@@ -149,13 +149,20 @@ $(document).ready(function(){
 
     $("#gif-area").on("click", ".add-fav", function(event){
         // save the gif div to a variable
+        var addBtn = $(this)[0].firstChild;
+        addBtn.data = "Remove from favorites";
+        var newFav = $("<div>");
+        newFav.addClass("new-fav");
         var favGif = $(this).prevAll().clone();
         var removeFav = $("<button>");
         removeFav.addClass("btn btn-info my-fav");
         removeFav.attr("id", "remove");
         removeFav.text(`Remove from favorites`);
-        
-        $("#fav").append(favGif[1], removeFav);
+        newFav.append(favGif[1], removeFav);
+        $("#fav").append(newFav);
+
+        $(addBtn, removeFav).on("click", function(){
+        });
         // save variable in cookies so that the page refresh won't wipe it clean
         // ^ include a "remove from favorites button for each div on this page"
         // sessionStorage.setItem("favorite", $("img"));
@@ -163,7 +170,14 @@ $(document).ready(function(){
         // var favoritesArea = $("#favorites-area");
     });
 
-    $("#remove").on("click", function(){});
+    $("#remove").on("click", function(){
+        
+    });
+
+    // Click event that empties everything from the favs section
+    $("#clear-favs").on("click", function(){
+        $("#fav").empty();
+    });
 
     renderButtons();
 })

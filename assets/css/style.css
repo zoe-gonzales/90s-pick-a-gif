@@ -77,6 +77,11 @@ img {
     margin: 0 .7rem .7rem .7rem; 
 }
 
+.new-fav {
+    width: 33%;
+    float: left;
+}
+
 .new-gif {
     float: left;
     width: 33%;
@@ -101,7 +106,6 @@ img {
 .listen {
     margin-left: 1rem;
 }
-
 
 /* Media Queries for Mobile Responsiveness */
 
