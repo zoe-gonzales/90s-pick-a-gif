@@ -62,6 +62,10 @@ form {
     border: none;
 }
 
+.plus-10 {
+    margin-left: .5rem;
+}
+
 .tv-show {
     margin: .3rem;
 }
@@ -151,10 +155,6 @@ img {
 }
 
 @media screen and (max-width: 640px) {
-
-    .btn-music {
-
-    }
 
     .new-gif {
         align-items: center;

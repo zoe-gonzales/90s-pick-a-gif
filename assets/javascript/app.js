@@ -3,7 +3,9 @@ $(document).ready(function(){
     // GLOBAL VARIABLES
     // Array includes all of the intial buttons to be displayed
     var topics = ["Hey Arnold", "Fresh Prince", "Aaahh!!! Real Monsters", "Daria", "All That", "Courage the Cowardly Dog", "Pokémon", "Sailor Moon", "CatDog", "PowerPuff Girls"];
-
+    var currentTopic = "";
+    var offsetNum = 0;
+    
     // Media Files    
     // Daria
     var daria = $("<audio>");
@@ -46,6 +48,7 @@ $(document).ready(function(){
     function renderGifs() {
         // saves data of clicked button
         var show = $(this).data("name");
+        currentTopic = show;
         var queryURL = `https://api.giphy.com/v1/gifs/search?q=${show}&limit=10&rating=pg-13&api_key=naqRbjAruZNru757XG6cSQyLUVmUQ3EC`;
         // AJAX call
         $.ajax({
@@ -85,6 +88,7 @@ $(document).ready(function(){
                 $("#gif-area").prepend(newGif);
             }
         });
+        console.log(queryURL);
     }
     // Allows toggling between animated and still states of each gif
     function animateGifs() {
@@ -151,6 +155,51 @@ $(document).ready(function(){
     function clearFavs() {
         $("#fav").empty();
     }
+    // Retrieves 10 new gifs with each click
+    function addTen() {  
+        offsetNum += 10;
+        console.log(offsetNum);
+        var queryURL = `https://api.giphy.com/v1/gifs/search?q=${currentTopic}&limit=10&rating=pg-13&offset=${offsetNum}&api_key=naqRbjAruZNru757XG6cSQyLUVmUQ3EC`;
+        // AJAX call
+        $.ajax({
+            url: queryURL,
+            method: "GET"
+        }).then(function(response){
+            // loops through array of available gifs (should be 10 in total)
+            for (var i=0; i < response.data.length; i++) {
+                // makes div to hold gif and other info
+                var newGif = $("<div>");
+                // makes new image element for each gif
+                var newMedia = $("<img>");
+                // retrieves image url from object and saving to variable
+                var imageStillSrc = `https://media0.giphy.com/media/${imageId}/200_s.gif`;
+                var imageAnimateSrc = `https://media0.giphy.com/media/${imageId}/200.gif`;
+                // var imageSource = response.data[i].images.fixed_height.url;
+                var imageId = response.data[i].id;
+                newMedia.attr("data-still", imageStillSrc);
+                newMedia.attr("data-animate", imageAnimateSrc);
+                newMedia.attr("data-state", "still");
+                // assigns image source to <img> element
+                newMedia.attr("src", imageStillSrc);
+                newMedia.addClass("gif");
+                var rating = $("<p>");
+                rating.text(`Rating: ${response.data[i].rating.toUpperCase()}`);
+                // creates button to add to favorites
+                var addToFav = $("<button>");
+                // text for add to favorites button
+                addToFav.text("Add to Favorites");
+                // adding classes for this button
+                addToFav.addClass("btn btn-info add-fav");
+                // appending image and button to new gif div
+                newGif.append(newMedia, rating, addToFav);
+                // adding class to newGif for later targeting
+                newGif.addClass("new-gif");
+                // prepends to the #gif-area div
+                $("#gif-area").prepend(newGif);
+            };
+        });
+        
+    }
 
     // GAME CLICK EVENTS
     // Renders gifs when one of the buttons is clicked
@@ -163,6 +212,8 @@ $(document).ready(function(){
     $("#gif-area").on("click", ".add-fav", addFavorites);
     // Empties everything from #favs section
     $("#clear-favs").on("click", clearFavs);
+    // Adds 10 of the current topics's gifs to the page
+    $("#add-10").on("click", addTen);
 
     // MEDIA CLICK EVENTS
     $("#daria-play").on("click", function(){
