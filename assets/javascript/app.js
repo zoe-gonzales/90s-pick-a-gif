@@ -88,7 +88,6 @@ $(document).ready(function(){
                 $("#gif-area").prepend(newGif);
             }
         });
-        console.log(queryURL);
     }
     // Allows toggling between animated and still states of each gif
     function animateGifs() {
@@ -118,7 +117,7 @@ $(document).ready(function(){
     function addFavorites() {
         // changing text of button with add-fav class
         var addBtn = $(this)[0];
-        addBtn.firstChild.data = "Added to favorites";
+        addBtn.firstChild.data = "Added to Favorites";
         // creating a new div that will hold clone of favorite gif
         var newFav = $("<div>");
         newFav.addClass("new-fav");
@@ -129,16 +128,12 @@ $(document).ready(function(){
         removeFav.addClass("btn btn-info my-fav remove");
         removeFav.text(`Remove from Favorites`);
         // appending gif and removal button to newFav div
-        newFav.append(favGif[1], removeFav);
+        newFav.append(favGif[1], removeFav);        
         // adding newFav div to favorites section
         $("#fav").append(newFav);
         // running function to allow for removal of favorite gifs
         removeFavs();
-        // Local Storage 
-        // save variable in cookies so that the page refresh won't wipe it clean
-        // sessionStorage.setItem("favorite", $("img"));
-        // console.log(sessionStorage);
-        // var favoritesArea = $("#favorites-area");
+        console.log("Here: " + JSON.stringify($(".new-fav")));
     }
     // Enables individual removal of targeted gif under Favorites section
     function removeFavs() {
@@ -154,11 +149,12 @@ $(document).ready(function(){
     // Empties everything from #favs section
     function clearFavs() {
         $("#fav").empty();
+        // supposed to clear sessionStorage
+        sessionStorage.clear();
     }
     // Retrieves 10 new gifs with each click
     function addTen() {  
         offsetNum += 10;
-        console.log(offsetNum);
         var queryURL = `https://api.giphy.com/v1/gifs/search?q=${currentTopic}&limit=10&rating=pg-13&offset=${offsetNum}&api_key=naqRbjAruZNru757XG6cSQyLUVmUQ3EC`;
         // AJAX call
         $.ajax({
@@ -201,6 +197,22 @@ $(document).ready(function(){
         
     }
 
+    // =====================
+    function storeFavs() {
+        // Local Storage 
+        if (typeof(Storage) !== "undefined") {
+        // setting sessionStorage        
+        sessionStorage.setItem("favorite", JSON.stringify($(".new-fav")));
+        var savedFavs = JSON.parse(sessionStorage.getItem("favorite"));
+    console.log(savedFavs);
+        } 
+        if (sessionStorage.length > 0) {
+    console.log("some things stored");
+        } else {
+    console.log("nothing stored");
+        }
+    }
+    
     // GAME CLICK EVENTS
     // Renders gifs when one of the buttons is clicked
     $(document).on("click", ".tv-show", renderGifs);
@@ -210,6 +222,7 @@ $(document).ready(function(){
     $("#add-show").on("click", addShow);
     // Enables functionality of adding to and removing from Favorites section
     $("#gif-area").on("click", ".add-fav", addFavorites);
+    $("#gif-area").on("click", ".add-fav", storeFavs);
     // Empties everything from #favs section
     $("#clear-favs").on("click", clearFavs);
     // Adds 10 of the current topics's gifs to the page
@@ -245,4 +258,5 @@ $(document).ready(function(){
     });
 
     renderButtons();
+    storeFavs();
 });

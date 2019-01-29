@@ -83,8 +83,9 @@ img {
 }
 
 .new-fav {
-    width: 33%;
     float: left;
+    width: 33%;
+    overflow: hidden;
 }
 
 .new-gif {
@@ -131,6 +132,11 @@ img {
         float: left;
         width: 45%;
     }
+
+    .new-fav {
+        float: left;
+        width: 45%;
+    }
     
     .btn-music {
         text-align: center;
@@ -162,6 +168,12 @@ img {
         width: 100%;
     }
 
+    .new-fav {
+        align-items: center;
+        text-align: center;
+        width: 100%;
+    }
+
     .container {
         margin: 0 1rem .5rem 1rem;
     }
@@ -178,6 +190,10 @@ img {
         width: 90%;
     }
 
+    .new-fav {
+        width: 90%;
+    }
+
     .container {
         margin: 0 .5rem .25rem .5rem;
     }
@@ -185,5 +201,5 @@ img {
     .listen {
         margin-left: .2rem;
     }
-    
+
 }
