@@ -5,6 +5,7 @@ $(document).ready(function(){
     var topics = ["Hey Arnold", "Fresh Prince", "Aaahh!!! Real Monsters", "Daria", "All That", "Courage the Cowardly Dog", "Pokémon", "Sailor Moon", "CatDog", "PowerPuff Girls"];
     var currentTopic = "";
     var offsetNum = 0;
+    // var numFav = 0;
     
     // Media Files    
     // Daria
@@ -128,12 +129,17 @@ $(document).ready(function(){
         removeFav.addClass("btn btn-info my-fav remove");
         removeFav.text(`Remove from Favorites`);
         // appending gif and removal button to newFav div
-        newFav.append(favGif[1], removeFav);        
+        newFav.append(favGif[1], removeFav);   
+        // var gif = newFav[0].firstChild;
+        // console.log(newFav[0].firstChild);     
+        // console.log(JSON.stringify($(newFav[0].firstChild)));
+        // console.log(JSON.parse(JSON.stringify(newFav)));
         // adding newFav div to favorites section
         $("#fav").append(newFav);
         // running function to allow for removal of favorite gifs
         removeFavs();
-        console.log("Here: " + JSON.stringify($(".new-fav")));
+        // storeFavs();
+        // numFav++;
     }
     // Enables individual removal of targeted gif under Favorites section
     function removeFavs() {
@@ -149,8 +155,8 @@ $(document).ready(function(){
     // Empties everything from #favs section
     function clearFavs() {
         $("#fav").empty();
-        // supposed to clear sessionStorage
-        sessionStorage.clear();
+        // clear sessionStorage
+        // sessionStorage.clear();
     }
     // Retrieves 10 new gifs with each click
     function addTen() {  
@@ -196,22 +202,14 @@ $(document).ready(function(){
         });
         
     }
-
-    // =====================
-    function storeFavs() {
-        // Local Storage 
-        if (typeof(Storage) !== "undefined") {
-        // setting sessionStorage        
-        sessionStorage.setItem("favorite", JSON.stringify($(".new-fav")));
-        var savedFavs = JSON.parse(sessionStorage.getItem("favorite"));
-    console.log(savedFavs);
-        } 
-        if (sessionStorage.length > 0) {
-    console.log("some things stored");
-        } else {
-    console.log("nothing stored");
-        }
-    }
+   
+    // stores favorite gifs via sessionStorage - not working
+    // function storeFavs() {
+        // Trying to save favorite gifs with sessionStorage - not working
+        // var savedDivs = {el1: ".new-fav", el2: ".gif", el3: ".my-fav"}
+        // sessionStorage.setItem("elements-" + numFav, JSON.stringify(savedDivs));
+        // var savedFav = JSON.parse(sessionStorage.getItem("elements"));
+    // }
     
     // GAME CLICK EVENTS
     // Renders gifs when one of the buttons is clicked
@@ -222,7 +220,6 @@ $(document).ready(function(){
     $("#add-show").on("click", addShow);
     // Enables functionality of adding to and removing from Favorites section
     $("#gif-area").on("click", ".add-fav", addFavorites);
-    $("#gif-area").on("click", ".add-fav", storeFavs);
     // Empties everything from #favs section
     $("#clear-favs").on("click", clearFavs);
     // Adds 10 of the current topics's gifs to the page
@@ -258,5 +255,5 @@ $(document).ready(function(){
     });
 
     renderButtons();
-    storeFavs();
+    // storeFavs();
 });
