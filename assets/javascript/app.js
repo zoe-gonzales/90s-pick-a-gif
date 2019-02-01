@@ -5,6 +5,7 @@ $(document).ready(function(){
     var topics = ["Hey Arnold", "Fresh Prince", "Aaahh!!! Real Monsters", "Daria", "All That", "Courage the Cowardly Dog", "Pokémon", "Sailor Moon", "CatDog", "PowerPuff Girls"];
     var currentTopic = "";
     var offsetNum = 0;
+    var musicPlaying = false;
     // var numFav = 0;
     
     // Media Files    
@@ -229,31 +230,58 @@ $(document).ready(function(){
 
     // MEDIA CLICK EVENTS
     $("#daria-play").on("click", function(){
-        daria.get(0).play();
+        if (!musicPlaying) {
+            daria.get(0).play();
+            musicPlaying = true;
+        }
     });
+
     $("#arnold-play").on("click", function(){
-        arnold.get(0).play();
+        if (!musicPlaying) {
+            arnold.get(0).play();
+            musicPlaying = true;
+        }
     });
+
     $("#prince-play").on("click", function(){
-        prince.get(0).play();
+        if (!musicPlaying) {
+            prince.get(0).play();
+            musicPlaying = true;
+        }
     });
+
     $("#sailor-play").on("click", function(){
-        sailor.get(0).play();
+        if (!musicPlaying) {
+            sailor.get(0).play();
+            musicPlaying = true;
+        }
     });
+
     $("#power-play").on("click", function(){
-        power.get(0).play();
+        if (!musicPlaying) {
+            power.get(0).play();
+            musicPlaying = true;
+        }
     });
+
     $("#all-play").on("click", function(){
-        allThat.get(0).play();
+        if (!musicPlaying) {
+            allThat.get(0).play();
+            musicPlaying = true;
+        }
     });
+
     // Pauses any of the buttons
     $("#pause").on("click", function(){
-        daria.get(0).pause();
-        arnold.get(0).pause();
-        prince.get(0).pause();
-        sailor.get(0).pause();
-        power.get(0).pause();
-        allThat.get(0).pause();
+        if (musicPlaying) {
+            daria.get(0).pause();
+            arnold.get(0).pause();
+            prince.get(0).pause();
+            sailor.get(0).pause();
+            power.get(0).pause();
+            allThat.get(0).pause();
+            musicPlaying = false;
+        }
     });
 
     renderButtons();
