@@ -109,6 +109,8 @@ $(document).ready(function(){
         event.preventDefault();
         // Get value of the user's input and save to var
         var input = $("#tv-input").val().trim();
+        // Clearing values in input field
+        $("#tv-input").val("");
         // push new value into the topics array
         topics.push(input);
         // rerun function to populate buttons
