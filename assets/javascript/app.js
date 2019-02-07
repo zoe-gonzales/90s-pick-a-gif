@@ -237,11 +237,19 @@ $(document).ready(function(){
         }
     });
 
+    daria.on("ended", function(){
+        musicPlaying = false;
+    });
+
     $("#arnold-play").on("click", function(){
         if (!musicPlaying) {
             arnold.get(0).play();
             musicPlaying = true;
         }
+    });
+
+    arnold.on("ended", function(){
+        musicPlaying = false;
     });
 
     $("#prince-play").on("click", function(){
@@ -251,11 +259,19 @@ $(document).ready(function(){
         }
     });
 
+    prince.on("ended", function(){
+        musicPlaying = false;
+    });
+
     $("#sailor-play").on("click", function(){
         if (!musicPlaying) {
             sailor.get(0).play();
             musicPlaying = true;
         }
+    });
+
+    sailor.on("ended", function(){
+        musicPlaying = false;
     });
 
     $("#power-play").on("click", function(){
@@ -265,11 +281,19 @@ $(document).ready(function(){
         }
     });
 
+    power.on("ended", function(){
+        musicPlaying = false;
+    });
+
     $("#all-play").on("click", function(){
         if (!musicPlaying) {
             allThat.get(0).play();
             musicPlaying = true;
         }
+    });
+
+    allThat.on("ended", function(){
+        musicPlaying = false;
     });
 
     // Pauses any of the buttons
