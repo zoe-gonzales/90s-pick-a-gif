@@ -63,11 +63,12 @@ $(document).ready(function(){
                 var newGif = $("<div>");
                 // makes new image element for each gif
                 var newMedia = $("<img>");
+                // saving image Id to var to be used in src url
+                var imageId = response.data[i].id;
                 // retrieves image url from object and saving to variable
                 var imageStillSrc = `https://media0.giphy.com/media/${imageId}/200_s.gif`;
                 var imageAnimateSrc = `https://media0.giphy.com/media/${imageId}/200.gif`;
-                // var imageSource = response.data[i].images.fixed_height.url;
-                var imageId = response.data[i].id;
+                // defining attributes for the new gif
                 newMedia.attr("data-still", imageStillSrc);
                 newMedia.attr("data-animate", imageAnimateSrc);
                 newMedia.attr("data-state", "still");
