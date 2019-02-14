@@ -6,8 +6,8 @@ $(document).ready(function(){
     var currentTopic = "";
     var offsetNum = 0;
     var musicPlaying = false;
-    // var numFav = 0;
-    
+    var favNum = 0;
+
     // Media Files    
     // Daria
     var daria = $("<audio>");
@@ -132,35 +132,55 @@ $(document).ready(function(){
         var removeFav = $("<button>");
         removeFav.addClass("btn btn-info my-fav remove");
         removeFav.text(`Remove from Favorites`);
+        removeFav.attr("data-id", favNum);
         // appending gif and removal button to newFav div
-        newFav.append(favGif[1], removeFav);   
-        // var gif = newFav[0].firstChild;
-        // console.log(newFav[0].firstChild);     
-        // console.log(JSON.stringify($(newFav[0].firstChild)));
-        // console.log(JSON.parse(JSON.stringify(newFav)));
+        newFav.append(favGif[1], removeFav);
+
+        // saving key info to localStorage for later
+        localStorage.setItem("num-favorites", favNum);
+        localStorage.setItem("rating-" + favNum, JSON.stringify(favGif[0].innerHTML));
+        localStorage.setItem("gif-dataset-" + favNum, JSON.stringify(favGif[1].dataset));
+
         // adding newFav div to favorites section
         $("#fav").append(newFav);
         // running function to allow for removal of favorite gifs
         removeFavs();
-        // storeFavs();
-        // numFav++;
+        favNum++;
     }
     // Enables individual removal of targeted gif under Favorites section
     function removeFavs() {
+        // targets only buttons with class of 'remove'
         if ($("button").hasClass("remove")) {
             $(".remove").on("click", function(){
+                // removing elements from DOM
                 var gifContent = $(this).prevAll();
                 var gifButton = $(this);
                 gifContent.remove();
                 gifButton.remove();
+                // targeting localStorage items with data-id
+                var itemId = $(this).attr("data-id");
+                // removing items from localStorage
+                localStorage.removeItem("rating-" + itemId);
+                localStorage.removeItem("gif-dataset-" + itemId);
+                // getting value of "num-favorites" to determine whether or not to remove it or decrement
+                var currentStoredNum = parseInt(localStorage.getItem("num-favorites"));
+                if (currentStoredNum > 0) {
+                    currentStoredNum = currentStoredNum - 1;
+                    localStorage.setItem("num-favorites", JSON.stringify(currentStoredNum));
+                } else {
+                    localStorage.removeItem("num-favorites");
+                    favNum = 0;
+                }
             });  
         }
+        
     }
     // Empties everything from #favs section
     function clearFavs() {
         $("#fav").empty();
-        // clear sessionStorage
-        // sessionStorage.clear();
+        // clear localStorage
+        favNum = 0;
+        localStorage.clear();
     }
     // Retrieves 10 new gifs with each click
     function addTen() {  
@@ -206,14 +226,40 @@ $(document).ready(function(){
         });
         
     }
-   
-    // stores favorite gifs via sessionStorage - not working
-    // function storeFavs() {
-        // Trying to save favorite gifs with sessionStorage - not working
-        // var savedDivs = {el1: ".new-fav", el2: ".gif", el3: ".my-fav"}
-        // sessionStorage.setItem("elements-" + numFav, JSON.stringify(savedDivs));
-        // var savedFav = JSON.parse(sessionStorage.getItem("elements"));
-    // }
+    // Saves favorite gifs in localStorage and retrieves and displays them on page load
+    function getStoredFavs() {
+        var savedCount = localStorage.getItem("num-favorites");
+        // checking that there is something in localStorage 
+        // if true, adds to the value currently held in localStorage
+        if (savedCount) {
+            favNum = parseInt(savedCount) + 1;
+        } else { // else sets to 0
+            favNum = 0;
+        }     
+        // re-appending divs and data from localStorage to Favorites section
+        for (var i=0; i < favNum; i++) {
+            var savedDiv = $("<div>");
+            savedDiv.addClass("new-fav saved-fav");
+            var savedGif = $("<img>");
+            var animateImgSrc = JSON.parse(localStorage.getItem("gif-dataset-" + i)).animate;
+            var stillImgSrc = JSON.parse(localStorage.getItem("gif-dataset-" + i)).still;
+            savedGif.attr("data-animate", animateImgSrc);
+            savedGif.attr("data-still", stillImgSrc);
+            savedGif.attr("data-state", JSON.parse(localStorage.getItem("gif-dataset-" + i)).state);
+            savedGif.attr("src", stillImgSrc);
+            savedGif.addClass("gif");
+            var savedRating = $("<p>");
+            var removeBtn = $("<button>");
+            removeBtn.addClass("btn btn-info my-fav remove");
+            removeBtn.text("Remove from favorites");
+            removeBtn.attr("data-id", i);
+            savedRating.text(JSON.parse(localStorage.getItem("rating-" + i)));
+            savedDiv.append(savedGif, savedRating, removeBtn);
+            $("#fav").append(savedDiv);
+        }
+        // Allows the re-populated gifs to be removed
+        removeFavs();
+    }
     
     // GAME CLICK EVENTS
     // Renders gifs when one of the buttons is clicked
@@ -229,7 +275,7 @@ $(document).ready(function(){
     // Adds 10 of the current topics's gifs to the page
     $("#add-10").on("click", addTen);
 
-    // MEDIA CLICK EVENTS
+    // MEDIA CLICK EVENTS - checks for whether or not music is playing, if the track has ended
     $("#daria-play").on("click", function(){
         if (!musicPlaying) {
             daria.get(0).play();
@@ -310,5 +356,5 @@ $(document).ready(function(){
     });
 
     renderButtons();
-    // storeFavs();
+    getStoredFavs();
 });
